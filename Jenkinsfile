@@ -17,13 +17,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/udaychittaluri1-sys/testing-frames'
-            }
-        }
-
         stage('Setup Virtual Environment') {
             steps {
                 bat '"C:\\Users\\chitt\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" -m venv venv'
