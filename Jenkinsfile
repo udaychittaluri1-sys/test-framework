@@ -26,7 +26,7 @@ pipeline {
 
         stage('Start Selenium Grid') {
             steps {
-                bat(script: 'docker rm -f selenium-hub chrome-node-1 chrome-node-2 chrome-node-3', returnStatus: true)
+                bat(script: 'docker rm -f selenium-hub chrome-node-1 chrome-node-2 chrome-node-3 || exit 0', returnStatus: true)
                 bat 'docker-compose up -d'
                 bat 'ping -n 40 127.0.0.1 > nul'
             }
@@ -67,7 +67,7 @@ pipeline {
 
         always {
             bat(script: 'docker-compose down', returnStatus: true)
-            bat(script: 'docker rm -f selenium-hub chrome-node-1 chrome-node-2 chrome-node-3', returnStatus: true)
+            bat(script: 'docker rm -f selenium-hub chrome-node-1 chrome-node-2 chrome-node-3 || exit 0', returnStatus: true)
 
             junit testResults: 'reports/junit.xml',
                   allowEmptyResults: true
