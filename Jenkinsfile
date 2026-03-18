@@ -26,7 +26,7 @@ pipeline {
 
         stage('Setup Virtual Environment') {
             steps {
-                bat 'C:\\Users\\chitt\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" -m venv venv'
+                bat '"C:\\Users\\chitt\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" -m venv venv'
                 bat 'venv\\Scripts\\pip install -r requirements.txt'
             }
         }
